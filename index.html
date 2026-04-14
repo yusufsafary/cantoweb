@@ -8,18 +8,20 @@
 <style>
 body{margin:0;font-family:'Noto Sans JP',sans-serif;background:#0a0a0a;color:#fff}
 body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03)1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03)1px,transparent 1px);background-size:40px 40px;z-index:-1}
-h1{font-size:48px;letter-spacing:6px}
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-.tagline{color:#aaa;margin-top:10px}
-.container{padding:30px 20px;max-width:1000px;margin:auto}
-.section{margin-top:70px}
-h2{color:#BC002D}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.card{border:1px solid rgba(255,255,255,0.1);padding:16px;border-radius:10px}
-.button{background:#BC002D;border:none;padding:12px 20px;color:#fff;border-radius:6px;cursor:pointer}
+h1{font-size:44px;letter-spacing:6px}
+.hero{min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
+.tagline{color:#aaa;margin-top:8px}
+.container{padding:30px 16px;max-width:960px;margin:auto}
+.section{margin-top:60px}
+h2{color:#BC002D;font-size:20px;margin-bottom:10px}
+p{color:#ccc;line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.card{border:1px solid rgba(255,255,255,0.1);padding:14px;border-radius:10px}
+.button{background:#BC002D;border:none;padding:12px 20px;color:#fff;border-radius:6px;cursor:pointer;margin-top:10px}
 .input{width:100%;padding:10px;margin-top:10px;background:#111;border:1px solid #333;color:#fff;border-radius:6px}
-.badge{margin-top:20px}
-.footer{margin-top:80px;padding:30px;text-align:center;color:#777;font-size:12px}
+.badge{margin-top:16px}
+.footer{margin-top:60px;padding:20px;text-align:center;color:#777;font-size:12px}
+.small{font-size:12px;color:#777;margin-top:6px}
 </style>
 </head>
 <body>
@@ -28,11 +30,14 @@ h2{color:#BC002D}
 <h1>CANTOPIA</h1>
 <div class="tagline">AI文化研究所</div>
 <div class="tagline">AIと文化が交差する場所。</div>
+<div class="small">AI Culture Lab from Japan</div>
+
 <div class="badge">
 <a href="https://orynth.dev/projects/cantopia-2875" target="_blank">
-<img src="https://orynth.dev/api/badge/cantopia-2875?theme=light&style=default" width="240" />
+<img src="https://orynth.dev/api/badge/cantopia-2875?theme=light&style=default" width="220" />
 </a>
 </div>
+
 <button class="button" onclick="scrollToSection('waitlist')">参加する / Join</button>
 </div>
 
@@ -40,38 +45,51 @@ h2{color:#BC002D}
 
 <div class="section">
 <h2>マニフェスト / Manifesto</h2>
-<p>AIを文化として再定義する。創造と実験のためのラボ。<br>We redefine AI as culture. A lab for creation and experimentation.</p>
+<p>
+AIを文化として再定義する。創造と実験のためのラボ。<br>
+We redefine AI as culture. A lab for creation and experimentation.
+</p>
 </div>
 
 <div class="section">
 <h2>プロダクト / Product</h2>
 <div class="grid">
-<div class="card">AI Agent（準備中）</div>
-<div class="card">Art Engine（準備中）</div>
-<div class="card">Community Layer（準備中）</div>
+<div class="card">🤖 AI Agent<br><span class="small">Coming soon</span></div>
+<div class="card">🎨 Art Engine<br><span class="small">Coming soon</span></div>
+<div class="card">🌐 Community<br><span class="small">Coming soon</span></div>
 </div>
 </div>
 
 <div class="section" id="waitlist">
 <h2>ウェイトリスト / Waitlist</h2>
-<p>早期アクセス登録<br>Get early access</p>
-<input class="input" placeholder="Email" />
-<button class="button">登録 / Submit</button>
+<p>早期アクセス登録 / Get early access</p>
+<input id="email" class="input" placeholder="Email" />
+<button class="button" onclick="submitEmail()">登録 / Submit</button>
+<div id="msg" class="small"></div>
 </div>
 
 <div class="section">
 <h2>How To</h2>
-<p>1. 登録<br>2. AI体験<br>3. コミュニティ参加<br><br>1. Sign up<br>2. Use AI<br>3. Join community</p>
+<p>
+1. 登録 → 2. AI体験 → 3. コミュニティ参加<br>
+1. Sign up → 2. Use AI → 3. Join community
+</p>
 </div>
 
 <div class="section">
 <h2>チーム / Team</h2>
-<p>分散型匿名チーム / Decentralized anonymous team</p>
+<p>
+分散型匿名チーム。AI、Web3、アートの融合。<br>
+Decentralized anonymous team blending AI, Web3, and art.
+</p>
 </div>
 
 <div class="section">
 <h2>Legal</h2>
-<p>実験的プロジェクト。投資助言ではありません。<br>Experimental project. Not financial advice.</p>
+<p>
+本プロジェクトは実験的プロダクトです。投資助言ではありません。<br>
+This is an experimental product and not financial advice.
+</p>
 </div>
 
 </div>
@@ -81,7 +99,17 @@ h2{color:#BC002D}
 </div>
 
 <script>
-function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});} 
+
+function submitEmail(){
+  const email=document.getElementById('email').value;
+  const msg=document.getElementById('msg');
+  if(!email || !email.includes('@')){
+    msg.innerText='有効なメールを入力してください / Enter valid email';
+    return;
+  }
+  msg.innerText='登録完了（デモ） / Submitted (demo)';
+}
 </script>
 
 </body>
