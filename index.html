@@ -1,135 +1,88 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CANTOPIA（カントピア）</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    body { margin:0; font-family:'Noto Sans JP', sans-serif; background:#0a0a0a; color:#fff; overflow-x:hidden; }
-
-    /* grid */
-    body::before{
-      content:""; position:fixed; inset:0;
-      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size:40px 40px; z-index:-1;
-    }
-
-    h1{ font-size:64px; letter-spacing:6px; animation:glitch 2s infinite; }
-    @keyframes glitch{
-      0%{text-shadow:2px 0 red;} 20%{text-shadow:-2px 0 blue;} 40%{text-shadow:2px 2px red;}
-      60%{text-shadow:-2px -2px blue;} 80%{text-shadow:2px -2px red;} 100%{text-shadow:none;}
-    }
-
-    .hero{ height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
-    .tagline{ color:#aaa; margin-top:10px; }
-
-    .container{ padding:40px 20px; max-width:1100px; margin:auto; }
-    .section{ margin-top:100px; }
-    h2{ color:#BC002D; margin-bottom:10px; }
-
-    .grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; }
-    .card{ border:1px solid rgba(255,255,255,0.1); padding:20px; border-radius:12px; transition:0.3s; }
-    .card:hover{ border-color:#BC002D; box-shadow:0 0 20px rgba(188,0,45,0.6); transform:translateY(-5px); }
-
-    .agent-box{ margin-top:40px; border:1px solid rgba(255,255,255,0.2); padding:20px; border-radius:12px; background:rgba(0,0,0,0.6); font-family:monospace; }
-    .typing{ color:#BC002D; }
-
-    .button{ background:#BC002D; border:none; padding:12px 24px; color:white; border-radius:8px; cursor:pointer; }
-    .button:hover{ background:#e0003a; }
-
-    .placeholder{ border:1px dashed rgba(255,255,255,0.2); padding:30px; border-radius:12px; color:#777; text-align:center; }
-
-    .badge{ margin-top:30px; text-align:center; }
-
-    @media(max-width:768px){ h1{ font-size:40px; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CANTOPIA（MVP）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Noto Sans JP',sans-serif;background:#0a0a0a;color:#fff}
+body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03)1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03)1px,transparent 1px);background-size:40px 40px;z-index:-1}
+h1{font-size:48px;letter-spacing:6px}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.tagline{color:#aaa;margin-top:10px}
+.container{padding:30px 20px;max-width:1000px;margin:auto}
+.section{margin-top:70px}
+h2{color:#BC002D}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.card{border:1px solid rgba(255,255,255,0.1);padding:16px;border-radius:10px}
+.button{background:#BC002D;border:none;padding:12px 20px;color:#fff;border-radius:6px;cursor:pointer}
+.input{width:100%;padding:10px;margin-top:10px;background:#111;border:1px solid #333;color:#fff;border-radius:6px}
+.badge{margin-top:20px}
+.footer{margin-top:80px;padding:30px;text-align:center;color:#777;font-size:12px}
+</style>
 </head>
 <body>
 
-  <div class="hero">
-    <h1>CANTOPIA</h1>
-    <div class="tagline">AI文化研究所</div>
-    <div class="tagline">AIと文化が交差する場所。</div>
+<div class="hero">
+<h1>CANTOPIA</h1>
+<div class="tagline">AI文化研究所</div>
+<div class="tagline">AIと文化が交差する場所。</div>
+<div class="badge">
+<a href="https://orynth.dev/projects/cantopia-2875" target="_blank">
+<img src="https://orynth.dev/api/badge/cantopia-2875?theme=light&style=default" width="240" />
+</a>
+</div>
+<button class="button" onclick="scrollToSection('waitlist')">参加する / Join</button>
+</div>
 
-    <!-- Orynth Badge -->
-    <div class="badge">
-      <a href="https://orynth.dev/projects/cantopia-2875" target="_blank" rel="noopener">
-        <img src="https://orynth.dev/api/badge/cantopia-2875?theme=light&style=default" alt="Featured on Orynth" width="260" height="80" />
-      </a>
-    </div>
-  </div>
+<div class="container">
 
-  <div class="container">
+<div class="section">
+<h2>マニフェスト / Manifesto</h2>
+<p>AIを文化として再定義する。創造と実験のためのラボ。<br>We redefine AI as culture. A lab for creation and experimentation.</p>
+</div>
 
-    <div class="section">
-      <h2>マニフェスト</h2>
-      <p>
-        私たちはAIを単なるツールではなく、文化として捉える。<br>
-        テクノロジーは遊びであり、創造であり、革命である。
-      </p>
-    </div>
+<div class="section">
+<h2>プロダクト / Product</h2>
+<div class="grid">
+<div class="card">AI Agent（準備中）</div>
+<div class="card">Art Engine（準備中）</div>
+<div class="card">Community Layer（準備中）</div>
+</div>
+</div>
 
-    <div class="section">
-      <h2>エコシステム</h2>
-      <div class="grid">
-        <div class="card">🤖 AIエージェント</div>
-        <div class="card">🎨 デジタルアート</div>
-        <div class="card">🌐 Web3コミュニティ</div>
-        <div class="card">📈 トレード</div>
-      </div>
-    </div>
+<div class="section" id="waitlist">
+<h2>ウェイトリスト / Waitlist</h2>
+<p>早期アクセス登録<br>Get early access</p>
+<input class="input" placeholder="Email" />
+<button class="button">登録 / Submit</button>
+</div>
 
-    <div class="section">
-      <h2>AIインターフェース</h2>
-      <div class="agent-box">
-        <div>＞ システム起動中...</div>
-        <div class="typing" id="typing"></div>
-      </div>
-    </div>
+<div class="section">
+<h2>How To</h2>
+<p>1. 登録<br>2. AI体験<br>3. コミュニティ参加<br><br>1. Sign up<br>2. Use AI<br>3. Join community</p>
+</div>
 
-    <!-- New Empty Content Sections -->
+<div class="section">
+<h2>チーム / Team</h2>
+<p>分散型匿名チーム / Decentralized anonymous team</p>
+</div>
 
-    <div class="section">
-      <h2>プロジェクト</h2>
-      <div class="placeholder">コンテンツ準備中...</div>
-    </div>
+<div class="section">
+<h2>Legal</h2>
+<p>実験的プロジェクト。投資助言ではありません。<br>Experimental project. Not financial advice.</p>
+</div>
 
-    <div class="section">
-      <h2>アートギャラリー</h2>
-      <div class="placeholder">コンテンツ準備中...</div>
-    </div>
+</div>
 
-    <div class="section">
-      <h2>コミュニティ</h2>
-      <div class="placeholder">コンテンツ準備中...</div>
-    </div>
+<div class="footer">
+© 2026 CANTOPIA — AI Culture Lab
+</div>
 
-    <div class="section">
-      <h2>トークン / エコノミー</h2>
-      <div class="placeholder">コンテンツ準備中...</div>
-    </div>
-
-    <div class="section" style="text-align:center;">
-      <h2>参加する</h2>
-      <button class="button">コミュニティに参加</button>
-    </div>
-
-  </div>
-
-  <script>
-    const text = "何を探していますか？";
-    let i = 0;
-    function type(){
-      if(i < text.length){
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(type, 80);
-      }
-    }
-    type();
-  </script>
+<script>
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+</script>
 
 </body>
 </html>
